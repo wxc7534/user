@@ -4,12 +4,14 @@
     import useUserStore from '@/store/modules/user.ts'
     import { useRouter } from 'vue-router'
     import { ElNotification } from 'element-plus'
+    import { getLoginTime } from '@/utils/loginDate'
     //登陆界面用户  用户名  与密码
     let loginFrom = reactive({username: '', password: ''})
 
     let $router = useRouter()
 
     let loading = ref(false)
+    //发送登录请求
     const login = async () => {
         loading.value = true
         const store = useUserStore()
@@ -23,7 +25,8 @@
 
             ElNotification({
                 type:'success',
-                message: '登录成功'
+                message: '欢迎回来',
+                title: `HI, ${getLoginTime()}`
             })
             // 登陆成功， 加载效果消失
             loading.value = false
@@ -36,6 +39,16 @@
             loading.value = false
         }
     }
+
+    //按enter键可以让password框获得焦点
+    let pass = ref()
+    const down = () => {
+        pass.value.focus()
+    }
+    //按enter登录
+    const up = () => {
+        login()
+    }
 </script>
 
 <template>
@@ -47,10 +60,10 @@
                         <h1>Hello</h1>
                         <h2>欢迎来到硅谷甄选</h2>
                         <el-form-item>
-                            <el-input :prefix-icon="User" v-model="loginFrom.username"></el-input>
+                            <el-input :prefix-icon="User" v-model="loginFrom.username" @keydown.enter="down"></el-input>
                         </el-form-item>
                         <el-form-item>
-                            <el-input type="password" :prefix-icon="Lock" v-model="loginFrom.password" show-password></el-input>
+                            <el-input type="password" :prefix-icon="Lock" v-model="loginFrom.password" show-password ref="pass"  @keydown.enter="up"></el-input>
                         </el-form-item>
 
                         <el-form-item>

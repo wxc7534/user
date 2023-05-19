@@ -18,7 +18,7 @@ import router from './router'
 const app = createApp(App)
 
 app.use(router)
-
+//注册仓库
 app.use(pinia)
 app.use(ElementPlus, {
     locale: zhCn,

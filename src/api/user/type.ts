@@ -8,11 +8,12 @@ export interface LoginFrom{
 //登陆返回响应类型
 export interface loginResponseData{
     code: number,
-    data: responseData
+    data: dataType
 }
 
-interface responseData{
-    token: string
+interface dataType{
+    token?: string
+    message?: string
 }
 
 // 用户信息类型
