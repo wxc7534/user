@@ -20,7 +20,7 @@
     "sass": "^1.62.1",
     "validator": "^13.9.0",
     "vue": "^3.3.2",
-    "vue-router": "4"
+    "vue-router": "^4.2.1"
   },
   "devDependencies": {
     "@tsconfig/node18": "^2.0.1",

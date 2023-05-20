@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import { onMounted} from 'vue'
-    const props = defineProps(['menuList'])
-    onMounted(() => {
-        console.log(props);
-    })
+// import { onMounted} from 'vue'
+import { useRouter } from 'vue-router';
+    defineProps(['menuList'])
+    let router = useRouter()
+
+    const goRouter = (vc: any) => {
+        
+        router.push(vc.index)
+
+    }
 </script>
 <script lang="ts">
     export default {
@@ -15,7 +20,7 @@ import { onMounted} from 'vue'
 <template>
     <template v-for="item in menuList" :key="item.path">
         <template v-if="!item.children" >
-            <el-menu-item v-if="!item.meta.hidden" index="item.path">
+            <el-menu-item v-if="!item.meta.hidden" :index="item.path" @click="goRouter">
                 <template #title>
                     <el-icon>
                         <component :is="item.meta.icon"></component>

@@ -15,16 +15,18 @@ export const constantRoute = [
         component: () => import('@/layout/index.vue'),
         name: 'home',
         meta: {
-            title: '首页',
+            title: 'layout首页',
             hidden: false,
             icon: 'HomeFilled'
 
         },
+        redirect: '/home',
         children:[
             {
-                path:'/guanli',
+                path:'/home',
+                component: () => import('@/views/home/index.vue'),
                 meta:{
-                    title:'管理',
+                    title:'首页',
                     hidden: false,
                     icon: 'Management'
 
@@ -58,5 +60,114 @@ export const constantRoute = [
             title: '任意路由',
             hidden: true
         }
+    },
+    //数据大屏路由
+    {
+        path: '/screen',
+        component: () => import('@/views/screen/index.vue'),
+        name: 'Screen',
+        meta: {
+            hidden: false,
+            title: '数据大屏',
+            icon: 'Platform'
+        }
+    },
+    //权限管理路由
+    {
+        path: '/acl',
+        component: () => import('@/layout/index.vue'),
+        name: 'Acl',
+        meta:{
+            hidden: false,
+            title: '权限管理',
+            icon: 'Lock'
+        },
+        //@ts-nocheck
+        children: [
+            {
+                path: '/acl/user',
+                component: () => import('@/views/acl/User/index.vue'),
+                name: 'User',
+                meta:{
+                    hidden: false,
+                    title: '用户管理',
+                    icon: 'User'
+                }
+            },
+            {
+                path: '/acl/role',
+                component: () => import('@/views/acl/role/index.vue'),
+                name: 'role',
+                meta: {
+                    hidden: false,
+                    title: '角色管理',
+                    icon: 'UserFilled'
+                }
+            },
+            {
+                path: '/acl/premission',
+                component: () => import('@/views/acl/premission/index.vue'),
+                name: 'premission',
+                meta: {
+                    hidden: false,
+                    title: '菜单管理',
+                    icon: 'Monitor'
+                }
+            }
+        ]
+    },
+
+    // 商品路由
+    {
+        path: '/product',
+        component: () => import('@/layout/index.vue'),
+        name: 'product',
+        meta: {
+            hidden: false,
+            title: '商品管理',
+            icon: 'Goods'
+        },
+        children: [
+            {
+                path: '/product/trademark',
+                component: () => import('@/views/product/trademark/index.vue'),
+                name: 'Trademark',
+                meta: {
+                    hidden: false,
+                    title: '品牌管理',
+                    icon: 'ShoppingCartFull'
+                }
+            },
+            {
+                path: '/product/attr',
+                component: () => import('@/views/product/attr/index.vue'),
+                name: 'Attr',
+                meta: {
+                    hidden: false,
+                    title: '属性管理',
+                    icon: 'ChromeFilled'
+                }
+            },
+            {
+                path: '/product/spu',
+                component: () => import('@/views/product/spu/index.vue'),
+                name: 'Spu',
+                meta: {
+                    hidden: false,
+                    title: 'SPU管理',
+                    icon: 'Calendar'
+                }
+            },
+            {
+                path: '/product/sku',
+                component: () => import('@/views/product/sku/index.vue'),
+                name: 'Sku',
+                meta: {
+                    hidden: false,
+                    title: 'SKU管理',
+                    icon: 'Calendar'
+                }
+            }
+        ]
     }
 ] 

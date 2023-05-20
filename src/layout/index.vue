@@ -29,7 +29,7 @@
         </div>
         <div class="layout_tabbar"></div>
         <div class="layout_main">
-            <p style="height: 10000000px; background-color: red;"></p>
+            <router-view></router-view>
         </div>
     </div>
 </template>
