@@ -22,7 +22,7 @@ const useUserStore = defineStore('user', () => {
     }
     let token = GET_TOKEN()
 
-    let menuRoutes: RouteRecordRaw[] = constantRoute as RouteRecordRaw[]
+    let menuRoutes = constantRoute
 
     return {
         userLogin,
