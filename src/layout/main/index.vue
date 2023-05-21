@@ -6,6 +6,8 @@
     const setting = useLayOutSettingStore()
     let { refsh } = storeToRefs(setting)
     let flag = ref(true)
+
+    //监听refsh 改动之后， 页面刷新
     watch(refsh, () => {
         flag.value = false
         

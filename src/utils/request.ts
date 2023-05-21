@@ -1,7 +1,10 @@
 //进行axios二次封装
 
 import axios from 'axios'
+//@ts-ignore
 import { ElMessage } from 'element-plus'
+
+import { GET_TOKEN } from './token'
  
 //第一步：利用axios对象的create方法, 去创建axios实例（）
 
@@ -12,6 +15,9 @@ let request = axios.create({
 //第二布：request实例添加请求与响应拦截器实例
 
 request.interceptors.request.use((config) => {
+    if(GET_TOKEN()){
+        config.headers.token = GET_TOKEN()
+    }
     // console.log(config);
     
     return config

@@ -1,15 +1,21 @@
 <script setup="ts">
+    //引入图标
     import { User, Lock } from '@element-plus/icons-vue'
     import { reactive, ref } from 'vue'
+    // 引入useUserStore小仓库
     import useUserStore from '@/store/modules/user.ts'
-    import { useRouter } from 'vue-router'
+
+    import { useRouter, useRoute } from 'vue-router'
+    //登录成功或失败的提示的功能的引用
     import { ElNotification } from 'element-plus'
+
+    //获取用户登陆时间方法
     import { getLoginTime } from '@/utils/loginDate'
     //登陆界面用户  用户名  与密码
     let loginFrom = reactive({username: '', password: ''})
 
     let $router = useRouter()
-
+    let $route = useRoute()
     let loading = ref(false)
 
 
@@ -28,8 +34,14 @@
         
         try {
             await userLogin(loginFrom)
+            //调用useUserStore小仓库的 userInfo 方法获取登录的用户信息
+            const User = useUserStore()
+            const { userInfo } = User
+            userInfo()
 
-            $router.push('/')
+            //跳转
+            let redirect = $route.query.redirect
+            $router.push({path: redirect || '/'})
 
             ElNotification({
                 type:'success',
@@ -65,10 +77,10 @@
         // 函数： 如果符合条件， callback放行通过即可
         // 如果不符合条件， 调用callback， 注入错误信息提示
     const validatorUserName = (rule,value,callback) => {
-        if(value.length >= 6){
+        if(value.length >= 5){
             callback()
         }else{
-            callback(new Error('账户在6-18'))
+            callback(new Error('账户在5-18'))
         }
     }
 
