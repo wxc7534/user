@@ -26,7 +26,7 @@
     <div class="layout_container">
 
         <!-- 左侧菜单栏 -->
-        <div class="layout_slider" :class="{fold: fold? true: false}">
+        <div class="layout_slider">
             <Logo></Logo>
 
             <!-- 展示菜单 -->
@@ -67,9 +67,6 @@
                 width: 100%;
                 height: calc(100vh - 50px);
 
-            }
-            &.fold{
-                width: 45px;
             }
         }
 

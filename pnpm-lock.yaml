@@ -19,6 +19,9 @@ dependencies:
   mockjs:
     specifier: ^1.1.0
     version: registry.npmmirror.com/mockjs@1.1.0
+  nprogress:
+    specifier: ^0.2.0
+    version: registry.npmmirror.com/nprogress@0.2.0
   path:
     specifier: ^0.12.7
     version: registry.npmmirror.com/path@0.12.7
@@ -1721,6 +1724,12 @@ packages:
       shell-quote: registry.npmmirror.com/shell-quote@1.8.1
       string.prototype.padend: registry.npmmirror.com/string.prototype.padend@3.1.4
     dev: true
+
+  registry.npmmirror.com/nprogress@0.2.0:
+    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/nprogress/-/nprogress-0.2.0.tgz}
+    name: nprogress
+    version: 0.2.0
+    dev: false
 
   registry.npmmirror.com/object-inspect@1.12.3:
     resolution: {integrity: sha512-geUvdk7c+eizMNUDkRpW1wJwgfOiOeHbxBR/hLXK1aT6zmVSO0jsQcs7fj6MGw89jC/cjGfLcNOrtMYtGqm81g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/object-inspect/-/object-inspect-1.12.3.tgz}

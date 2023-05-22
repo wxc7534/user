@@ -14,7 +14,7 @@ const useUserStore = defineStore('user', () => {
         let result: loginResponseData = await reqLogin(data)
         
         if(result.code == 200){
-            token = result.data.token as string
+            token.value = result.data.token as string
            SET_TOKEN(result.data.token!)
             return 'ok'
         }else{
@@ -22,7 +22,7 @@ const useUserStore = defineStore('user', () => {
         }
     }
     //token
-    let token = GET_TOKEN()
+    let token = ref(GET_TOKEN())
 
     //获取路由信息
     let menuRoutes = constantRoute
@@ -38,6 +38,9 @@ const useUserStore = defineStore('user', () => {
        if(result.code == 200){
             username.value = result.data.checkUser.username
             avatar.value = result.data.checkUser.avatar
+            return '您已经登陆'
+       }else{
+            return Promise.reject('用户登陆失败')
        }
        
     }
@@ -46,6 +49,7 @@ const useUserStore = defineStore('user', () => {
         username.value = ''
         avatar.value = ''
         REMOVE_ITEM()
+        token.value = ''
     }
 
     return {
@@ -54,7 +58,8 @@ const useUserStore = defineStore('user', () => {
         userInfo,
         avatar,
         username,
-        userLogOut
+        userLogOut,
+        token
     }
 })
 

@@ -2,9 +2,8 @@
     //引入图标
     import { User, Lock } from '@element-plus/icons-vue'
     import { reactive, ref } from 'vue'
-    // 引入useUserStore小仓库
-    import useUserStore from '@/store/modules/user.ts'
 
+    import useUserStore from '@/store/modules/user'
     import { useRouter, useRoute } from 'vue-router'
     //登录成功或失败的提示的功能的引用
     import { ElNotification } from 'element-plus'
@@ -34,14 +33,11 @@
         
         try {
             await userLogin(loginFrom)
-            //调用useUserStore小仓库的 userInfo 方法获取登录的用户信息
-            const User = useUserStore()
-            const { userInfo } = User
-            userInfo()
 
             //跳转
             let redirect = $route.query.redirect
-            $router.push({path: redirect || '/'})
+            console.log(redirect);
+            $router.push({path: '/'})
 
             ElNotification({
                 type:'success',

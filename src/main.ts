@@ -28,4 +28,6 @@ app.use(ElementPlus, {
     app.component(key, component)
   }
 
+import './permisstion'
+
 app.mount('#app')

@@ -25,7 +25,7 @@
             document.exitFullscreen()
         }
     }
-    // 获取登录的用户的信息进行渲染
+    // // 获取登录的用户的信息进行渲染
         const userin = useUserStore()
         const { username, avatar } = storeToRefs(userin)
         const { userLogOut } = userin
