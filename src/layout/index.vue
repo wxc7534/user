@@ -90,7 +90,6 @@
             position: absolute;
             width: calc(100% - 260px);
             height: calc(100vh - 50px);
-            background: yellow;
             left: 260px;
             top: 50px;
             padding:20px;
