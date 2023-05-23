@@ -23,11 +23,10 @@ router.beforeEach(async(to: any, from: any, next: any) => {
     nprogress.start();
     // 获取登录的用户的信息进行渲染
     const userin = useUserStore()
-    const { username, avatar } = storeToRefs(userin)
+    const { username } = storeToRefs(userin)
     const { userInfo, userLogOut } = userin
 
     if(token.value){
-        console.log(token.value);
         
         if(to.path == '/login'){
             next({path: '/'})
@@ -36,10 +35,11 @@ router.beforeEach(async(to: any, from: any, next: any) => {
                 next()
             }else{
                 try{
-                    await userInfo()
+                    await userInfo()    
+                    
                     next()
                 }catch(error){
-                    userLogOut()
+                    await userLogOut()
                     next({path: '/login'})
                 }
             }

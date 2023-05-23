@@ -37,7 +37,7 @@
             //跳转
             let redirect = $route.query.redirect
             console.log(redirect);
-            $router.push({path: '/'})
+            $router.push({path: redirect || '/'})
 
             ElNotification({
                 type:'success',

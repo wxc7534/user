@@ -2,7 +2,6 @@
     import useLayOutSettingStore from '@/store/modules/setting';
     import { storeToRefs } from 'pinia';
     import { useRouter, useRoute } from 'vue-router';
-    import { onMounted } from 'vue';
     import useUserStore from '@/store/modules/user'
     const setting  = useLayOutSettingStore()
     const { refsh } = storeToRefs(setting)
@@ -31,9 +30,15 @@
         const { userLogOut } = userin
 
     //用户退出登录
-    const logout = () => {
-        userLogOut()
-        $router.push({path: '/login', query: {redirect: $route.path}})
+    const logout = async () => {
+        
+        try{
+            let result = await userLogOut()
+            $router.push({path: '/login', query: {redirect: $route.path}})
+        }catch(error){
+            
+        }
+        
     }
 </script>
 <script lang="ts">
