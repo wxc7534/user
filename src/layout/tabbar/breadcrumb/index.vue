@@ -32,7 +32,6 @@ export default{
             <span>{{ item.meta.title }}</span>
         </el-breadcrumb-item>
     </el-breadcrumb>
-
 </template>
 
 <style>

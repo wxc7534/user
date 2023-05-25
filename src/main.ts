@@ -13,11 +13,13 @@ import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 
 // @ts-ignore
 import App from './App.vue'
-
+import Category from './components/Category/index.vue'
 import router from './router'
 
 const app = createApp(App)
 
+//  全局对象
+const allGloabCompontent: any = {Category}
 app.use(router)
 //注册仓库
 app.use(pinia)
@@ -29,5 +31,8 @@ app.use(ElementPlus, {
   }
 
 import './permisstion'
+
+//@ts-ignore
+app.component('Category', Category)
 
 app.mount('#app')

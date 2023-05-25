@@ -1,4 +1,4 @@
-<script setup="ts">
+<script setup lang="ts">
     //引入图标
     import { User, Lock } from '@element-plus/icons-vue'
     import { reactive, ref } from 'vue'
@@ -6,6 +6,7 @@
     import useUserStore from '@/store/modules/user'
     import { useRouter, useRoute } from 'vue-router'
     //登录成功或失败的提示的功能的引用
+    //@ts-ignore
     import { ElNotification } from 'element-plus'
 
     //获取用户登陆时间方法
@@ -37,6 +38,7 @@
             //跳转
             let redirect = $route.query.redirect
             console.log(redirect);
+            //@ts-ignore
             $router.push({path: redirect || '/'})
 
             ElNotification({
@@ -49,6 +51,7 @@
         } catch (error) {
             ElNotification({
                 type: 'error',
+                //@ts-ignore
                 message: error.message
             })
             // 登录失败， 加载效果消失
@@ -72,7 +75,10 @@
         // value: 即为表单元素文本内容
         // 函数： 如果符合条件， callback放行通过即可
         // 如果不符合条件， 调用callback， 注入错误信息提示
+        //@ts-ignore
     const validatorUserName = (rule,value,callback) => {
+        console.log(value);
+        
         if(value.length >= 5){
             callback()
         }else{
