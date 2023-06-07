@@ -9,7 +9,6 @@ const { getC1Data, getC2Data, getC3Data  } = categoryStore
 let c1Id = ref<number>()
 onMounted( async () => {
     getC1Data()
-    
 })
 const hanlder1 = () => {
     c2ArrId.value = ''

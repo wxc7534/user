@@ -23,7 +23,8 @@ export interface CategoryResponseData extends ResponseData{
 export interface AttrValue{
     id?: number,
     valueName: string,
-    attrId?: number
+    attrId?: number,
+    flag?: boolean
 }
 
 // 存储每一个属性值的数组类型
@@ -35,7 +36,7 @@ export interface Attr{
     attrName: string,
     categoryId: number | string,
     categoryLevel: number,
-    attrValueList: attrValueList
+    attrValueList: attrValueList,
 }
 //存储每一个属性对象的ts类型
 export type AttrList = Attr[]
